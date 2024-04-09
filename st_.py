@@ -22,8 +22,8 @@ st.write(data_pre)
 
 
 stop_words = stopwords.words('indonesian')
-# factory = StemmerFactory()
-# stemmer = factory.create_stemmer()
+factory = StemmerFactory()
+stemmer = factory.create_stemmer()
 
 def remove_url(tweet):
     url = re.compile(r'https?://\S+|www\.\S+')
