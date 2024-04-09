@@ -96,7 +96,7 @@ data
 
 from pages.input import *
 
-# query = pd.DataFrame(query)
+query = pd.DataFrame(query)
 query
 
 
