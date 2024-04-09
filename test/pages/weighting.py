@@ -1,4 +1,4 @@
 import streamlit as st
-import preprocessing
+import pre
 
 data_pre
