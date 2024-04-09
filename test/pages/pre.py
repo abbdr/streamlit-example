@@ -92,7 +92,7 @@ data_pre['cleaned'] = stem()
 data = data_pre['cleaned']
     
 '## \'Clean\' Data'
-data_pre['cleaned']
+data
 
 
 
