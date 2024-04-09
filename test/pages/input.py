@@ -1,9 +1,14 @@
 import streamlit as st
 
-query = ''
-def callback(string):
-    query = string
 
-input_text = st.text_area("Enter a text", key="input_text", on_change=callback)
+@st.cache_data
+def input():
+    data = st.text_input('')
+    return data
+    
+query = input()
+
+if st.button('reset'):
+    query = 0
 
 'query : ',query
