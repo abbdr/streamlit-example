@@ -1,4 +1,4 @@
 import streamlit as st
-import pre
+import pages.pre
 
 data_pre
