@@ -97,6 +97,6 @@ data
 query = ''
 if 'input_user' in st.session_state:
     query = st.session_state['input_user']
-    st.write(f"Input yang Anda masukkan adalah: {st.session_state['input_user']}")
+    st.write(f"Input yang Anda masukkan adalah: {query}")
 
 
