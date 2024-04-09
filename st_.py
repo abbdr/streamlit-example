@@ -83,12 +83,12 @@ with st.spinner('Lowercasing and Tokenization...'):
 with st.spinner('Reducing stopword...'):
   data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: [word for word in x if word not in stop_words])
 
+@st.cache_data
+def stem():
+    data = data_pre['cleaning'].apply(lambda x: stem_text(x))
+    return data
 
-if "stem" not in st.session_state:
-    with st.spinner('Stemming, Please Wait...'):
-        st.session_state.stem = data_pre['cleaning'].apply(lambda x: stem_text(x))
-    
-data_pre['cleaning'] = st.session_state.stem
+data_pre['cleaning'] = stem()
     
 '## \'Clean\' Data'
 data_pre['cleaning']
