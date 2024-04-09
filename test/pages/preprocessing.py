@@ -94,9 +94,9 @@ data = data_pre['cleaned']
 '## \'Clean\' Data'
 data
 
-from pages.input import query
-
-query = pd.DataFrame(query)
-query
+query = ''
+if 'input_user' in st.session_state:
+    query = st.session_state['input_user']
+    st.write(f"Input yang Anda masukkan adalah: {st.session_state['input_user']}")
 
 
