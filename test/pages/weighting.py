@@ -1,4 +1,4 @@
 import streamlit as st
-from pages.pre import data
+from pages.preprocessing import data
 
 data
