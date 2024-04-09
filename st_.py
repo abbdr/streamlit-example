@@ -8,6 +8,7 @@ from nltk.corpus import stopwords
 nltk.download('stopwords')
 '''
 # Preprocessing
+## Dataset
 '''
 df = pd.read_csv('dataset_tweet_sentimen_tayangan_tv.csv')
 df
@@ -17,7 +18,7 @@ data = df['Text Tweet'].tolist()
 data.append(query)
 
 data_pre = pd.DataFrame(data,columns=['Text Tweet'])
-'# The Sentences Data'
+'## Sentences Data'
 st.write(data_pre)
 
 
@@ -67,5 +68,8 @@ data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: x.lower().split())
 data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: [word for word in x if word not in stop_words])
 data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: stem_text(x))
 
-'# The \'Clean\' Data'
+'# \'Clean\' Data'
 data_pre['cleaning']
+
+
+'# \nPR mu iku 👆👆👆👆👆\ngilangi kata-kata slang'
