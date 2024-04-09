@@ -1,6 +1,6 @@
 import streamlit as st
 
-query = '
+query = ''
 def proc():
     query = st.session_state.text_key
     # st.write(st.session_state.text_key)
