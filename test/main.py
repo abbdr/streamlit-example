@@ -1,3 +1,3 @@
 import streamlit as st
 '# test'
-st.sidebar('## this is sidebar')
+st.sidebar.markdown('## this is sidebar')
