@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import string
 import re
-from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
+# from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 import nltk
 from nltk.corpus import stopwords
 nltk.download('stopwords')
@@ -22,8 +22,8 @@ st.write(data_pre)
 
 
 stop_words = stopwords.words('indonesian')
-factory = StemmerFactory()
-stemmer = factory.create_stemmer()
+# factory = StemmerFactory()
+# stemmer = factory.create_stemmer()
 
 def remove_url(tweet):
     url = re.compile(r'https?://\S+|www\.\S+')
@@ -65,7 +65,7 @@ data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: remove_angka(x))
 data_pre['cleaning'].drop_duplicates(inplace=True)
 data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: x.lower().split())
 data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: [word for word in x if word not in stop_words])
-data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: stem_text(x))
+# data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: stem_text(x))
 
 '# The Clean Data'
 data_pre['cleaning']
