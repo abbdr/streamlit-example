@@ -1,4 +1,4 @@
 import streamlit as st
 
-query = st.chat_input('ketik query')
+query = st.message_input('ketik query')
 'query : ',query
