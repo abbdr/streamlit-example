@@ -88,10 +88,10 @@ def stem():
     data = data_pre['cleaning'].apply(lambda x: stem_text(x))
     return data
 
-data_pre['cleaning'] = stem()
+data_pre['cleaned'] = stem()
     
 '## \'Clean\' Data'
-data_pre['cleaning']
+data_pre['cleaned']
 
 
 
