@@ -97,5 +97,3 @@ data
 
 
 
-
-'# \nPR mu iku 👆👆👆👆👆\nngilangi kata-kata slang'
