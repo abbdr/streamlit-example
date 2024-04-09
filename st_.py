@@ -2,14 +2,14 @@ import streamlit as st
 import pandas as pd
 import string
 import re
-# from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
+from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 import nltk
 from nltk.corpus import stopwords
 nltk.download('stopwords')
 '''
 # Preprocessing
 '''
-df = pd.read_csv('../../dataset/dataset_tweet_sentimen_tayangan_tv.csv')
+df = pd.read_csv('dataset_tweet_sentimen_tayangan_tv.csv')
 df
 
 query = 'yang kamu butuhkan hanyalah mengambil pulpen dan mulai belajar'
@@ -65,7 +65,7 @@ data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: remove_angka(x))
 data_pre['cleaning'].drop_duplicates(inplace=True)
 data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: x.lower().split())
 data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: [word for word in x if word not in stop_words])
-# data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: stem_text(x))
+data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: stem_text(x))
 
 '# The Clean Data'
 data_pre['cleaning']
