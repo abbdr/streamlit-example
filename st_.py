@@ -68,8 +68,8 @@ data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: x.lower().split())
 data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: [word for word in x if word not in stop_words])
 data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: stem_text(x))
 
-'# \'Clean\' Data'
+'## \'Clean\' Data'
 data_pre['cleaning']
 
 
-'# \nPR mu iku 👆👆👆👆👆\ngilangi kata-kata slang'
+'# \nPR mu iku 👆👆👆👆👆\nngilangi kata-kata slang'
