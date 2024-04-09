@@ -1,5 +1,6 @@
 import streamlit as st
 
-st.session_state.query = st.chat_input('ketik query')
+with 'query' not in st.session_state:
+  st.session_state.query = st.chat_input('ketik query')
 query = st.session_state.query
 'query : ',query
