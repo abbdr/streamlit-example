@@ -83,11 +83,18 @@ with st.spinner('Lowercasing and Tokenization...'):
 with st.spinner('Reducing stopword...'):
   data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: [word for word in x if word not in stop_words])
 
-with st.spinner('Stemming, Please Wait...'):
-  data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: stem_text(x))
 
+if "stem" not in st.session_state:
+    with st.spinner('Stemming, Please Wait...'):
+        st.session_state.stem = data_pre['cleaning'].apply(lambda x: stem_text(x))
+    
+data_pre['cleaning'] = st.session_state.stem
+    
 '## \'Clean\' Data'
 data_pre['cleaning']
+
+
+
 
 
 '# \nPR mu iku 👆👆👆👆👆\nngilangi kata-kata slang'
