@@ -94,7 +94,7 @@ data = data_pre['cleaned']
 '## \'Clean\' Data'
 data
 
-from pages.input import query
+from pages.input import *
 
 # query = pd.DataFrame(query)
 query
