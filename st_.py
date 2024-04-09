@@ -10,8 +10,9 @@ nltk.download('stopwords')
 # Preprocessing
 ## Dataset
 '''
-df = pd.read_csv('dataset_tweet_sentimen_tayangan_tv.csv')
-df
+with st.spinner('Getting Dataset...'):
+    df = pd.read_csv('dataset_tweet_sentimen_tayangan_tv.csv')
+    df
 
 query = 'yang kamu butuhkan hanyalah mengambil pulpen dan mulai belajar'
 data = df['Text Tweet'].tolist()
@@ -58,15 +59,32 @@ def stem_text(text):
     return [stemmer.stem(word) for word in text]
 
 
-data_pre['cleaning'] = data_pre['Text Tweet'].apply(lambda x: remove_url(x)) #
-data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: remove_html(x))
-data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: remove_punct(x))
-data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: remove_emoji(x))
-data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: remove_angka(x))
-data_pre['cleaning'].drop_duplicates(inplace=True)
-data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: x.lower().split())
-data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: [word for word in x if word not in stop_words])
-data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: stem_text(x))
+with st.spinner('Reducing url...'):
+  data_pre['cleaning'] = data_pre['Text Tweet'].apply(lambda x: remove_url(x))
+
+with st.spinner('Reducing html code...'):
+  data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: remove_html(x))
+
+with st.spinner('Reducing punctuation...'):
+  data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: remove_punct(x))
+
+with st.spinner('Reducing emoji...'):
+  data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: remove_emoji(x))
+
+with st.spinner('Reducing number...'):
+  data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: remove_angka(x))
+
+with st.spinner('Reducing duplicate item...'):
+  data_pre['cleaning'].drop_duplicates(inplace=True)
+
+with st.spinner('Lowercasing and Tokenization...'):
+  data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: x.lower().split())
+
+with st.spinner('Reducing stopword...'):
+  data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: [word for word in x if word not in stop_words])
+
+with st.spinner('Stemming, Please Wait...'):
+  data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: stem_text(x))
 
 '## \'Clean\' Data'
 data_pre['cleaning']
