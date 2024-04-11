@@ -107,7 +107,9 @@ if 'dataku' in st.session_state:
       c.append(i/b)
       a += 1
 
-  st.write(max(c))
-  st.write(np.argmax(c))
+  st.write('input : ', st.session_state['data'][0])
+  st.write('output : ', st.session_state['dataku'][np.argmax(c)])
+  st.write('similarity : ', max(c))
+  
 
 
