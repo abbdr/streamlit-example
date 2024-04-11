@@ -97,7 +97,7 @@ if 'dataku' in st.session_state:
   # cosine similarity
   c = []
   a = 0
-  for i in wd401_di:
+  for i in Wd401_di:
       b = vs_di[a]*vs_d401
       if not b:
           c.append(0)
