@@ -97,7 +97,7 @@ if 'data' in st.session_state:
     # dataku = pd.DataFrame(dataku)
     
     '## \'Clean\' Training + Test/Input Data'
-    dataku[-1]
+    dataku
     input
 
 
