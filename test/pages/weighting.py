@@ -29,13 +29,13 @@ if 'dataku' in st.session_state:
       
       # print()
       d.append(list)
-  st.write(len(d))
-  doc_clean
-  clean_data
+    
   d
-  # d1, d2, d3, d4, d5, d6, d7 = d[0], d[1], d[2], d[3], d[4], d[5], d[6]
+  doc_frame = pd.DataFrame(doc_clean, columns=['Terms'])
+  for i in range(1,402):
+    doc_frame[f'd{i}'] = d[i-1]
 
-  # doc_frame = pd.DataFrame(doc_clean, columns=['Terms'])
+  
   # doc_frame['d1'] = d1
   # doc_frame['d2'] = d2
   # doc_frame['d3'] = d3
