@@ -108,6 +108,6 @@ if 'dataku' in st.session_state:
       a += 1
 
   st.write(max(c))
-
+  st.write(np.argmax(c))
 
 
