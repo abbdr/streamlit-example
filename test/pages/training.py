@@ -12,6 +12,7 @@ nltk.download('stopwords')
 '''
 with st.spinner('Getting Dataset...'):
     df = pd.read_csv('dataset_tweet_sentimen_tayangan_tv.csv')
+    st.session_state['sentiment'] = df['sentiment']
     df
 
 data_pre = pd.DataFrame(df['Text Tweet'])
