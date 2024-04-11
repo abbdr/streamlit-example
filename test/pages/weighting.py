@@ -85,19 +85,20 @@ if 'dataku' in st.session_state:
 
   # query*wdi sum
   Wd401_di = []
-  for i in range(1,402):
+  for i in range(1,401):
     Wd401_di.append(doc_frame[f'Wd401_d{i}'].values.sum())
 
   # length vector sum
   vs_di = []
-  for i in range(1,402):
+  for i in range(1,401):
     vs_di.append(np.sqrt(doc_frame[f'v_d{i}'].values.sum()))
+  vs_d401 = np.sqrt(doc_frame['v_d401'].values.sum())
 
   # cosine similarity
   c = []
   a = 0
   for i in wd401_di:
-      b = vs_di[a]*vs_di[-1]
+      b = vs_di[a]*vs_d401
       if not b:
           c.append(0)
           a += 1
