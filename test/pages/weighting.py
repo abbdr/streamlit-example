@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
-from pages.training import data
 
-data
+if 'input_user' in st.session_state:
+  from pages.training import data
+  
+  datas
 
