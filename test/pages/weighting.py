@@ -61,17 +61,17 @@ if 'dataku' in st.session_state:
   for i in range(1,402):
     doc_frame[f'Wd{i}'] = Wd[i-1]
 
-  Wd402_di = []
+  Wd401_di = []
   for i in range(1,402):
       a = []
       n = 0
       for j in doc_frame[f'Wd{i}']:
-          a.append(doc_frame['Wd402'][n]*j)
+          a.append(doc_frame['Wd401'][n]*j)
           n += 1
-      Wd402_di.append(a)
+      Wd401_di.append(a)
 
   for i in range(1,402):
-    doc_frame[f'Wd402_d{i}'] = Wd402_di[i-1]
+    doc_frame[f'Wd401_d{i}'] = Wd401_di[i-1]
   
   doc_frame
 
