@@ -90,9 +90,9 @@ data_pre['cleaned']
 
 
 if 'input_user' in st.session_state:
-    import pages.input.data
+    import pages.input
     
-    input = data.tolist()[0]
+    input = input.data.tolist()[0]
     data = data_pre['cleaned'].tolist().append(input)
     data
 
