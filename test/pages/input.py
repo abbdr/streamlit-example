@@ -88,7 +88,7 @@ if 'input_user' in st.session_state:
         return data
     
     data_pre['cleaned'] = stem()
-    data = data_pre['cleaned'].tolist()
+    data = data_pre['cleaned'].tolist()[0]
         
     '## \'Clean\' Input'
     data
