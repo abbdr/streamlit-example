@@ -52,7 +52,7 @@ data_pre = ''
 data = ''
 
 if 'input_user' in st.session_state:
-    query = [st.session_state['input_user']]
+    query = [input_user]
     data_pre = pd.DataFrame(query,columns=['Text Input'])
     
     '## Input Data'
