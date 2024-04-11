@@ -84,11 +84,10 @@ if 'input_user' in st.session_state:
     data_pre
     @st.cache_data
     def stem():
-        data = data_pre['cleaned'].apply(lambda x: stem_text(x))
-        return data
+        return data_pre['cleaned'].apply(lambda x: stem_text(x))
     
     data_pre['cleaned'] = stem()
-    data_pre
+    
     data = data_pre['cleaned'].tolist()
     st.session_state['data'] = data
         
