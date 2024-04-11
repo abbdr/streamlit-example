@@ -35,8 +35,6 @@ if 'dataku' in st.session_state:
   for i in range(1,402):
     doc_frame[f'd{i}'] = d[i-1]
 
-  
-
   df = []
   a,b = 0,1
   for i in range(len(doc_frame.iloc[:,:1])):
@@ -45,6 +43,12 @@ if 'dataku' in st.session_state:
       b += 1
   
   doc_frame['df'] = df
+
+  idf = []
+  for i in doc_frame['df']:
+      idf.append(np.log10(7/i))
+  
+  doc_frame['idf'] = idf
 
   doc_frame
 
