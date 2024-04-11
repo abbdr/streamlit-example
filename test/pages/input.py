@@ -92,5 +92,5 @@ if 'input_user' in st.session_state:
     st.session_state['data'] = data
         
     '## \'Clean\' Input'
-    data
+    data_pre
 
