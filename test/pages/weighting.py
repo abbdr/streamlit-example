@@ -62,7 +62,7 @@ if 'dataku' in st.session_state:
     doc_frame[f'Wd{i}'] = Wd[i-1]
 
   Wd401_di = []
-  for i in range(1,402):
+  for i in range(1,401):
       a = []
       n = 0
       for j in doc_frame[f'Wd{i}']:
