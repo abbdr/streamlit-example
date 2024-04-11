@@ -78,12 +78,14 @@ if st.button('simpan'):
     
     with st.spinner('Reducing stopword...'):
       data_pre['cleaned'] = data_pre['cleaned'].apply(lambda x: [word for word in x if word not in stop_words])
+    '## before stemming'
     data_pre
     @st.cache_data
     def stem():
         return data_pre['cleaned'].apply(lambda x: stem_text(x))
     
     data_pre['cleaned'] = stem()
+    '## after stemming'
     data_pre
     data = data_pre['cleaned'].tolist()
     st.session_state['data'] = data
