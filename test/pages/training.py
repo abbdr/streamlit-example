@@ -89,12 +89,13 @@ data_pre['cleaned'] = stem()
 data_pre['cleaned']
 
 
+
 if 'input_user' in st.session_state:
-    import pages.input
+    from pages.input import data
     
-    input = data.tolist()
-    # data = data_pre['cleaned'].tolist().append(input)
-    # data
+    input = data.tolist()[0]
+    data = data_pre['cleaned'].tolist().append(input)
+    data
 
 
 
