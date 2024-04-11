@@ -7,7 +7,7 @@ import nltk
 from nltk.corpus import stopwords
 nltk.download('stopwords')
 '''
-# Preprocessing
+# Preprocessing Training Data
 ## Dataset
 '''
 with st.spinner('Getting Dataset...'):
