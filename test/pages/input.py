@@ -45,7 +45,7 @@ def stem_text(text):
 query = ''
 data_pre = ''
 data = ''
-input_user = '
+input_user = ''
 input_ = st.text_input("Masukkan teks Anda di sini:")
 if st.button('simpan'):
     input_user = input_
