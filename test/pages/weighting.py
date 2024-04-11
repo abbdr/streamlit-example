@@ -72,6 +72,9 @@ if 'dataku' in st.session_state:
 
   for i in range(1,401):
     doc_frame[f'Wd401_d{i}'] = Wd401_di[i-1]
+
+  for i in range(1,402):
+    doc_frame[f'v_d{i}'] = doc_frame[f'wd{i}'].apply(lambda x: x**2)
   
   doc_frame
 
