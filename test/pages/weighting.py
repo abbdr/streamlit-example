@@ -14,7 +14,7 @@ if 'dataku' in st.session_state:
 
   d = []
   a = 0
-  for i in range(len(doc_clean)):
+  for i in range(len(clean_data)):
       list = []
       for j in doc_clean:
           if a>=len(clean_data):
