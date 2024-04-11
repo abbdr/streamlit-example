@@ -111,7 +111,7 @@ if 'dataku' in st.session_state:
   st.write('output : ', st.session_state['dataku'][np.argmax(c)])
   st.write('similarity : ', max(c))
  
-  c3 = sorted(c, reverse=True)[:3]
+  c3 = sorted(zip(c,st.session_state['dataku']), reverse=True)[:3]
   c3
   
 
