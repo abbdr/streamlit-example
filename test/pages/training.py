@@ -94,10 +94,10 @@ if 'data' in st.session_state:
     dataku = data_pre['cleaned'].tolist()
     dataku.append(input)
     st.session_state['dataku'] = dataku
-    dataku = pd.DataFrame(dataku)
+    # dataku = pd.DataFrame(dataku)
     
     '## \'Clean\' Training + Test/Input Data'
-    dataku
+    dataku[-1]
     input
 
 
