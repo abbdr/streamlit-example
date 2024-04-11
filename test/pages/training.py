@@ -90,7 +90,8 @@ data_pre['cleaned']
 
 if 'data' in st.session_state:
     input = st.session_state['data']
-    input
+    dataku = pd.DataFrame(data_pre['cleaned'].tolist().append(input))
+    dataku
 
 
 
