@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 
 if 'dataku' in st.session_state:
   clean_data = st.session_state['dataku']
