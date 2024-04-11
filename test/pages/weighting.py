@@ -36,6 +36,7 @@ if 'dataku' in st.session_state:
   for i in range(1,402):
     doc_frame[f'd{i}'] = d[i-1]
 
+  # df
   df = []
   a,b = 0,1
   for i in range(len(doc_frame.iloc[:,:1])):
@@ -44,11 +45,13 @@ if 'dataku' in st.session_state:
       b += 1
   doc_frame['df'] = df
 
+  # idf
   idf = []
   for i in doc_frame['df']:
       idf.append(np.log10(len(clean_data)/i))
   doc_frame['idf'] = idf
 
+  # wdi
   Wd = []
   for i in range(1,402):
       a = []
@@ -61,6 +64,7 @@ if 'dataku' in st.session_state:
   for i in range(1,402):
     doc_frame[f'Wd{i}'] = Wd[i-1]
 
+  # query*wdi
   Wd401_di = []
   for i in range(1,401):
       a = []
@@ -73,11 +77,36 @@ if 'dataku' in st.session_state:
   for i in range(1,401):
     doc_frame[f'Wd401_d{i}'] = Wd401_di[i-1]
 
+  # length vector
   for i in range(1,402):
     doc_frame[f'v_d{i}'] = doc_frame[f'Wd{i}'].apply(lambda x: x**2)
   
   doc_frame
 
+  # query*wdi sum
+  Wd401_di = []
+  for i in range(1,402):
+    Wd401_di.append(doc_frame[f'Wd401_d{i}'].values.sum())
+
+  # length vector sum
+  vs_di = []
+  for i in range(1,402):
+    vs_di.append(np.sqrt(doc_frame[f'v_d{i}'].values.sum()))
+
+  # cosine similarity
+  c = []
+  a = 0
+  for i in wd401_di:
+      b = vs_di[a]*vs_di[-1]
+      if not b:
+          c.append(0)
+          a += 1
+          
+          continue
+      c.append(i/b)
+      a += 1
+
+  c
 
 
 
