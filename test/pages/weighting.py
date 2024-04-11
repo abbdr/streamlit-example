@@ -36,12 +36,18 @@ if 'dataku' in st.session_state:
     doc_frame[f'd{i}'] = d[i-1]
 
   
-  # doc_frame['d1'] = d1
-  # doc_frame['d2'] = d2
-  # doc_frame['d3'] = d3
-  # doc_frame['d4'] = d4
-  # doc_frame['d5'] = d5
-  # doc_frame['d6'] = d6
-  # doc_frame['d7'] = d7
+
+  df = []
+  a,b = 0,1
+  for i in range(len(doc_frame.iloc[:,:1])):
+      df.append(doc_frame.iloc[a:b,1:].values.sum())
+      a += 1
+      b += 1
+  
+  doc_frame['df'] = df
 
   doc_frame
+
+
+
+
