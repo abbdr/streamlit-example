@@ -3,7 +3,7 @@ import pandas as pd
 
 if 'dataku' in st.session_state:
   clean_data = st.session_state['dataku']
-  clean_data[-1]
+  # clean_data[-1]
 
   doc = []
   for nums in clean_data:
@@ -30,7 +30,7 @@ if 'dataku' in st.session_state:
       # print()
       d.append(list)
     
-  d
+  # d
   doc_frame = pd.DataFrame(doc_clean, columns=['Terms'])
   for i in range(1,402):
     doc_frame[f'd{i}'] = d[i-1]
