@@ -91,5 +91,5 @@ if 'input_user' in st.session_state:
     data = data_pre['cleaned'].tolist()
         
     '## \'Clean\' Input'
-    data
+    data_pre
 
