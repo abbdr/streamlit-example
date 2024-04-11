@@ -70,7 +70,7 @@ if 'dataku' in st.session_state:
           n += 1
       Wd401_di.append(a)
 
-  for i in range(1,402):
+  for i in range(1,401):
     doc_frame[f'Wd401_d{i}'] = Wd401_di[i-1]
   
   doc_frame
