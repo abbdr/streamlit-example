@@ -59,32 +59,32 @@ if 'input_user' in st.session_state:
     st.write(data_pre)
     
     with st.spinner('Reducing url...'):
-      data_pre['cleaning'] = data_pre['Text Input'].apply(lambda x: remove_url(x))
+      data_pre['cleaned'] = data_pre['Text Input'].apply(lambda x: remove_url(x))
     
     with st.spinner('Reducing html code...'):
-      data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: remove_html(x))
+      data_pre['cleaned'] = data_pre['cleaned'].apply(lambda x: remove_html(x))
     
     with st.spinner('Reducing punctuation...'):
-      data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: remove_punct(x))
+      data_pre['cleaned'] = data_pre['cleaned'].apply(lambda x: remove_punct(x))
     
     with st.spinner('Reducing emoji...'):
-      data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: remove_emoji(x))
+      data_pre['cleaned'] = data_pre['cleaned'].apply(lambda x: remove_emoji(x))
     
     with st.spinner('Reducing number...'):
-      data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: remove_angka(x))
+      data_pre['cleaned'] = data_pre['cleaned'].apply(lambda x: remove_angka(x))
     
     with st.spinner('Reducing duplicate item...'):
-      data_pre['cleaning'].drop_duplicates(inplace=True)
+      data_pre['cleaned'].drop_duplicates(inplace=True)
     
     with st.spinner('Lowercasing and Tokenization...'):
-      data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: x.lower().split())
+      data_pre['cleaned'] = data_pre['cleaned'].apply(lambda x: x.lower().split())
     
     with st.spinner('Reducing stopword...'):
-      data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: [word for word in x if word not in stop_words])
+      data_pre['cleaned'] = data_pre['cleaned'].apply(lambda x: [word for word in x if word not in stop_words])
     
     @st.cache_data
     def stem():
-        data = data_pre['cleaning'].apply(lambda x: stem_text(x))
+        data = data_pre['cleaned'].apply(lambda x: stem_text(x))
         return data
     
     data_pre['cleaned'] = stem()
