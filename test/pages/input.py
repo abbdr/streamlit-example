@@ -80,7 +80,6 @@ if st.button('simpan'):
       data_pre['cleaned'] = data_pre['cleaned'].apply(lambda x: [word for word in x if word not in stop_words])
     '## before stemming'
     data_pre
-    @st.cache_data
     def stem():
         return data_pre['cleaned'].apply(lambda x: stem_text(x))
     
