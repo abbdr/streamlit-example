@@ -58,7 +58,7 @@ def stem_text(text):
 
 
 with st.spinner('Reducing url...'):
-  data_pre['cleaning'] = data_pre['Text Tweet'].apply(lambda x: remove_url(x))
+  data_pre['cleaning'] = data_pre['Text Input'].apply(lambda x: remove_url(x))
 
 with st.spinner('Reducing html code...'):
   data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: remove_html(x))
