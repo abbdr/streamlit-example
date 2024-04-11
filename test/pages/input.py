@@ -88,4 +88,6 @@ st.session_state['data'] = data
     
 '## \'Clean\' Input'
 data_pre
+a = stem()
+a
 
