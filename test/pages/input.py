@@ -49,6 +49,7 @@ def stem_text(text):
 
 query = ''
 data_pre = ''
+data = ''
 
 if 'input_user' in st.session_state:
     query = [st.session_state['input_user']]
