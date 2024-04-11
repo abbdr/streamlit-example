@@ -7,11 +7,6 @@ import nltk
 from nltk.corpus import stopwords
 nltk.download('stopwords')
 
-input_user = st.text_input("Masukkan teks Anda di sini:")
-if st.button("Simpan"):
-    st.session_state['input_user'] = input_user
-    st.success("Input berhasil disimpan!")
-
 stop_words = stopwords.words('indonesian')
 factory = StemmerFactory()
 stemmer = factory.create_stemmer()
@@ -50,47 +45,47 @@ def stem_text(text):
 query = ''
 data_pre = ''
 data = ''
+input_user = st.text_input("Masukkan teks Anda di sini:")
 
-if 'input_user' in st.session_state:
-    query = [input_user]
-    data_pre = pd.DataFrame(query,columns=['Text Input'])
+query = [input_user]
+data_pre = pd.DataFrame(query,columns=['Text Input'])
+
+'## Input Data'
+data_pre
+
+with st.spinner('Reducing url...'):
+  data_pre['cleaned'] = data_pre['Text Input'].apply(lambda x: remove_url(x))
+data_pre
+with st.spinner('Reducing html code...'):
+  data_pre['cleaned'] = data_pre['cleaned'].apply(lambda x: remove_html(x))
+data_pre
+with st.spinner('Reducing punctuation...'):
+  data_pre['cleaned'] = data_pre['cleaned'].apply(lambda x: remove_punct(x))
+data_pre
+with st.spinner('Reducing emoji...'):
+  data_pre['cleaned'] = data_pre['cleaned'].apply(lambda x: remove_emoji(x))
+data_pre
+with st.spinner('Reducing number...'):
+  data_pre['cleaned'] = data_pre['cleaned'].apply(lambda x: remove_angka(x))
+data_pre
+with st.spinner('Reducing duplicate item...'):
+  data_pre['cleaned'].drop_duplicates(inplace=True)
+data_pre
+with st.spinner('Lowercasing and Tokenization...'):
+  data_pre['cleaned'] = data_pre['cleaned'].apply(lambda x: x.lower().split())
+data_pre
+with st.spinner('Reducing stopword...'):
+  data_pre['cleaned'] = data_pre['cleaned'].apply(lambda x: [word for word in x if word not in stop_words])
+data_pre
+@st.cache_data
+def stem():
+    return data_pre['cleaned'].apply(lambda x: stem_text(x))
+
+data_pre['cleaned'] = stem()
+data_pre
+data = data_pre['cleaned'].tolist()
+st.session_state['data'] = data
     
-    '## Input Data'
-    data_pre
-    
-    with st.spinner('Reducing url...'):
-      data_pre['cleaned'] = data_pre['Text Input'].apply(lambda x: remove_url(x))
-    data_pre
-    with st.spinner('Reducing html code...'):
-      data_pre['cleaned'] = data_pre['cleaned'].apply(lambda x: remove_html(x))
-    data_pre
-    with st.spinner('Reducing punctuation...'):
-      data_pre['cleaned'] = data_pre['cleaned'].apply(lambda x: remove_punct(x))
-    data_pre
-    with st.spinner('Reducing emoji...'):
-      data_pre['cleaned'] = data_pre['cleaned'].apply(lambda x: remove_emoji(x))
-    data_pre
-    with st.spinner('Reducing number...'):
-      data_pre['cleaned'] = data_pre['cleaned'].apply(lambda x: remove_angka(x))
-    data_pre
-    with st.spinner('Reducing duplicate item...'):
-      data_pre['cleaned'].drop_duplicates(inplace=True)
-    data_pre
-    with st.spinner('Lowercasing and Tokenization...'):
-      data_pre['cleaned'] = data_pre['cleaned'].apply(lambda x: x.lower().split())
-    data_pre
-    with st.spinner('Reducing stopword...'):
-      data_pre['cleaned'] = data_pre['cleaned'].apply(lambda x: [word for word in x if word not in stop_words])
-    data_pre
-    @st.cache_data
-    def stem():
-        return data_pre['cleaned'].apply(lambda x: stem_text(x))
-    
-    data_pre['cleaned'] = stem()
-    data_pre
-    data = data_pre['cleaned'].tolist()
-    st.session_state['data'] = data
-        
-    '## \'Clean\' Input'
-    data_pre
+'## \'Clean\' Input'
+data_pre
 
