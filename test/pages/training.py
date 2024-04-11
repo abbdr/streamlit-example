@@ -85,7 +85,7 @@ def stem():
 
 data_pre['cleaned'] = stem()
     
-'## \'Clean\' Data'
+'## \'Clean\' Training Data'
 data_pre['cleaned']
 
 dataku = ''
@@ -94,7 +94,9 @@ if 'data' in st.session_state:
     dataku = data_pre['cleaned'].tolist()
     dataku.append(input)
     st.session_state['dataku'] = dataku
+    dataku = pd.DataFrame(dataku)
     
+    '## \'Clean\' Training + Test/Input Data'
     dataku
     input
 
