@@ -93,6 +93,7 @@ if 'data' in st.session_state:
     input = st.session_state['data']
     dataku = data_pre['cleaned'].tolist()
     dataku.append(input)
+    st.session_state['dataku'] = dataku
     
     dataku
     input
