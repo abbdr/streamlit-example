@@ -15,7 +15,7 @@ if st.button("Simpan"):
 query = ''
 data_pre = ''
 if 'input_user' in st.session_state:
-    query = st.session_state['input_user']
+    query = [st.session_state['input_user']]
     data_pre = pd.DataFrame(query,columns=['Text Input'])
 
 '## Input Data'
