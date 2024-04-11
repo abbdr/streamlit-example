@@ -1,8 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-if 'input_user' in st.session_state:
-  from pages.training import dataku
-  
-  dataku
+if 'dataku' in st.session_state:
+  clean_data = st.session_state['dataku']
+  clean_data
 
