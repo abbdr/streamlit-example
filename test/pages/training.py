@@ -81,7 +81,7 @@ with st.spinner('Reducing stopword...'):
 @st.cache_data
 def stem():
     data = data_pre['cleaning'].apply(lambda x: stem_text(x))
-    return datae
+    return data
 
 data_pre['cleaned'] = stem()
     
