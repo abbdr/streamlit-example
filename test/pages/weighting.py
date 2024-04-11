@@ -42,15 +42,25 @@ if 'dataku' in st.session_state:
       df.append(doc_frame.iloc[a:b,1:].values.sum())
       a += 1
       b += 1
-  
   doc_frame['df'] = df
 
   idf = []
   for i in doc_frame['df']:
       idf.append(np.log10(len(clean_data)/i))
-  
   doc_frame['idf'] = idf
 
+  wd = []
+  for i in range(1,402):
+      a = []
+      n = 0
+      for j in doc_frame[f'd{i}']:
+          a.append(j*idf[n])
+          n += 1
+      wd.append(a)
+
+  for i in range(1,402):
+    doc_frame[f'Wd{i}'] = wd[i-1]
+  
   doc_frame
 
 
