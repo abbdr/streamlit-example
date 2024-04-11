@@ -1,5 +1,5 @@
 import streamlit as st
 import pandas as pd
-from pages.preprocessing import data
+from pages.training import data
 
 data
