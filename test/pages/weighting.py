@@ -107,7 +107,7 @@ if 'dataku' in st.session_state:
       c.append(i/b)
       a += 1
 
-  max(c)
+  st.write(max(c))
 
 
 
