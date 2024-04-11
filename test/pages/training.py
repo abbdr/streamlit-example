@@ -14,14 +14,9 @@ with st.spinner('Getting Dataset...'):
     df = pd.read_csv('dataset_tweet_sentimen_tayangan_tv.csv')
     df
 
-query = 'yang kamu butuhkan hanyalah mengambil pulpen dan mulai belajar'
-data = df['Text Tweet'].tolist()
-data.append(query)
-
-data_pre = pd.DataFrame(data,columns=['Text Tweet'])
+data_pre = pd.DataFrame(df['Text Tweet'])
 '## Sentences Data'
 st.write(data_pre)
-
 
 stop_words = stopwords.words('indonesian')
 factory = StemmerFactory()
@@ -86,17 +81,29 @@ with st.spinner('Reducing stopword...'):
 @st.cache_data
 def stem():
     data = data_pre['cleaning'].apply(lambda x: stem_text(x))
-    return data
+    return datae
 
 data_pre['cleaned'] = stem()
-data = data_pre['cleaned']
     
 '## \'Clean\' Data'
-data
+data_pre['cleaned']
 
-query = ''
+
 if 'input_user' in st.session_state:
-    query = st.session_state['input_user']
-    st.write(f"Input yang Anda masukkan adalah: {query}")
+    from pages.input import data
+    
+    input = data.tolist()[0]
+    data = data_pre['cleaned'].tolist().append(input)
+    data
+
+
+
+
+
+
+
+
+
+
 
 
