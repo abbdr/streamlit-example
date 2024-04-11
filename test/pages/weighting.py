@@ -29,16 +29,16 @@ if 'dataku' in st.session_state:
       
       # print()
       d.append(list)
-  
-  d1, d2, d3, d4, d5, d6, d7 = d[0], d[1], d[2], d[3], d[4], d[5], d[6]
+  d
+  # d1, d2, d3, d4, d5, d6, d7 = d[0], d[1], d[2], d[3], d[4], d[5], d[6]
 
-  doc_frame = pd.DataFrame(doc_clean, columns=['Terms'])
-  doc_frame['d1'] = d1
-  doc_frame['d2'] = d2
-  doc_frame['d3'] = d3
-  doc_frame['d4'] = d4
-  doc_frame['d5'] = d5
-  doc_frame['d6'] = d6
-  doc_frame['d7'] = d7
+  # doc_frame = pd.DataFrame(doc_clean, columns=['Terms'])
+  # doc_frame['d1'] = d1
+  # doc_frame['d2'] = d2
+  # doc_frame['d3'] = d3
+  # doc_frame['d4'] = d4
+  # doc_frame['d5'] = d5
+  # doc_frame['d6'] = d6
+  # doc_frame['d7'] = d7
 
-  doc_frame
+  # doc_frame
