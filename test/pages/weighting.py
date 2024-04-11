@@ -49,29 +49,29 @@ if 'dataku' in st.session_state:
       idf.append(np.log10(len(clean_data)/i))
   doc_frame['idf'] = idf
 
-  wd = []
+  Wd = []
   for i in range(1,402):
       a = []
       n = 0
       for j in doc_frame[f'd{i}']:
           a.append(j*idf[n])
           n += 1
-      wd.append(a)
+      Wd.append(a)
 
   for i in range(1,402):
-    doc_frame[f'Wd{i}'] = wd[i-1]
+    doc_frame[f'Wd{i}'] = Wd[i-1]
 
-  wd402_di = []
+  Wd402_di = []
   for i in range(1,402):
       a = []
       n = 0
-      for j in doc_frame[f'wd{i}']:
-          a.append(doc_frame['wd402'][n]*j)
+      for j in doc_frame[f'Wd{i}']:
+          a.append(doc_frame['Wd402'][n]*j)
           n += 1
-      wd7_di.append(a)
+      Wd402_di.append(a)
 
   for i in range(1,402):
-    doc_frame[f'Wd402_d{i}'] = wd402_di[i-1]
+    doc_frame[f'Wd402_d{i}'] = Wd402_di[i-1]
   
   doc_frame
 
