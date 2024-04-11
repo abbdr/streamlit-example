@@ -45,9 +45,10 @@ def stem_text(text):
 query = ''
 data_pre = ''
 data = ''
-input_user = ''
+input_user = '
+input_ = st.text_input("Masukkan teks Anda di sini:")
 if st.button('simpan'):
-    input_user = st.text_input("Masukkan teks Anda di sini:")
+    input_user = input_
 
 query = [input_user]
 data_pre = pd.DataFrame(query,columns=['Text Input'])
