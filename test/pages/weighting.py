@@ -47,7 +47,7 @@ if 'dataku' in st.session_state:
 
   idf = []
   for i in doc_frame['df']:
-      idf.append(np.log10(7/i))
+      idf.append(np.log10(len(clean_data)/i))
   
   doc_frame['idf'] = idf
 
