@@ -46,6 +46,7 @@ query = ''
 data_pre = ''
 data = ''
 input = st.text_input("Masukkan teks Anda di sini:")
+st.session_state['input_df'] = pd.DataFrame(input)
 k = st.number_input("Masukkan nilai k di sini (ganjil):",3,201,value=3,step=2)
 k = k+1 if k%2 else k
 if st.button('simpan'):
@@ -85,7 +86,6 @@ if st.button('simpan'):
         return data_pre['cleaned'].apply(lambda x: stem_text(x))
     
     data_pre['cleaned'] = stem()
-    st.session_state['input_df'] = data_pre['cleaned']
     data = data_pre['cleaned'].tolist()
     st.session_state['data'] = data
         
