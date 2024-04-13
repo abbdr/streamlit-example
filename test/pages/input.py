@@ -90,5 +90,5 @@ if st.button('simpan'):
     st.session_state['data'] = data
         
     '## \'Clean\' Input'
-    data
+    data_pre['cleaned']
 
