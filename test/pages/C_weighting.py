@@ -127,10 +127,6 @@ if 'dataku' in st.session_state:
           continue
       c.append(i/b)
       a += 1
-
-  st.write('input : ', st.session_state['data'][0])
-  c3 = sorted(zip(c, st.session_state['dataku'], st.session_state['sentiment'], st.session_state['id']),  reverse=True)
-  c3 = pd.DataFrame(c3)
-  c3
+      st.session_state['c'] = c
 
 
