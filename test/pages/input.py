@@ -49,7 +49,7 @@ input = st.text_input("Masukkan teks Anda di sini:")
 k = st.number_input("Masukkan nilai k di sini (ganjil):",3,201,value=3,step=2)
 k = k+1 if k%2 else k
 if st.button('simpan'):
-    st.session_state['input_df'] = pd.DataFrame(input)
+    st.session_state['input_df'] = pd.DataFrame([input])
     input_user = input
     st.session_state['k'] = k
     query = [input_user]
