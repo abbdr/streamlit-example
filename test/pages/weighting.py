@@ -47,12 +47,16 @@ if 'dataku' in st.session_state:
       a += 1
       b += 1
   doc_frame['df'] = df
+  '## DF'
+  st.write(doc_frame.iloc[:,402:])
 
   # idf
   idf = []
   for i in doc_frame['df']:
       idf.append(np.log10(len(clean_data)/i))
   doc_frame['idf'] = idf
+  '## iDF'
+  st.write(doc_frame.iloc[:,403:])
 
   # wdi
   Wd = []
@@ -66,6 +70,8 @@ if 'dataku' in st.session_state:
 
   for i in range(1,402):
     doc_frame[f'Wd{i}'] = Wd[i-1]
+  '## WDi'
+  st.write(doc_frame.iloc[:,404:])
 
   # query*wdi
   Wd401_di = []
