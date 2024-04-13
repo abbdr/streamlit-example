@@ -36,6 +36,8 @@ if 'dataku' in st.session_state:
   doc_frame = pd.DataFrame(doc_clean, columns=['Terms'])
   for i in range(1,402):
     doc_frame[f'd{i}'] = d[i-1]
+  '## D'
+  doc_frame.iloc[:,403:]
 
   # df
   df = []
@@ -109,6 +111,7 @@ if 'dataku' in st.session_state:
       a += 1
 
   st.write('input : ', st.session_state['input_df'])
+  st.write('k : ',st.session_state['k'])
   c3 = sorted(zip(c, st.session_state['id'], st.session_state['data_awal'], st.session_state['sentiment']),  reverse=True)
   c3 = pd.DataFrame(c3)
   c3.rename(columns = {0:'Relevancy', 1:'Id', 2:'terms', 3:'Sentiment'}, inplace = True)
