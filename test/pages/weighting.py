@@ -108,7 +108,7 @@ if 'dataku' in st.session_state:
       a += 1
 
   st.write('input : ', st.session_state['data'][0])
-  c3 = sorted(zip(c, st.session_state['dataku'], st.session_state['sentiment']), reverse=True)[:3]
+  c3 = sorted(zip(c, st.session_state['dataku'], st.session_state['sentiment']), reverse=True)[:5]
   c3
 
 
