@@ -45,12 +45,15 @@ def stem_text(text):
 query = ''
 data_pre = ''
 data = ''
-input_ = st.text_input("Masukkan teks Anda di sini:")
+input = st.text_input("Masukkan teks Anda di sini:")
+k = st.number_input("Masukkan nilai k di sini (ganjil):",3,201,value=3,step=2)
+k = k+1 if k%2 else k
 if st.button('simpan'):
-    input_user = input_
-    
+    input_user = input
+    st.session_state['k'] = k
     query = [input_user]
     data_pre = pd.DataFrame(query,columns=['Text Input'])
+    st.session_state['input_df'] = data_pre
     
     '## Input Data'
     data_pre
@@ -83,9 +86,9 @@ if st.button('simpan'):
         return data_pre['cleaned'].apply(lambda x: stem_text(x))
     
     data_pre['cleaned'] = stem()
-    data = data_pre['cleaned'].tolist()
+    data = data_pre['cleaned']
     st.session_state['data'] = data
         
     '## \'Clean\' Input'
-    data
+    data_pre['cleaned']
 

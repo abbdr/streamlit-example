@@ -6,19 +6,23 @@ from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 import nltk
 from nltk.corpus import stopwords
 nltk.download('stopwords')
-'''
-# Preprocessing Training Data
-## Dataset
-'''
+
+'# Dataset'
+
 with st.spinner('Getting Dataset...'):
     df = pd.read_csv('dataset_tweet_sentimen_tayangan_tv.csv')
+    st.session_state['data_awal'] = df['Text Tweet']
     st.session_state['sentiment'] = df['Sentiment']
     st.session_state['id'] = df['Id']
     df
 
 data_pre = pd.DataFrame(df['Text Tweet'])
-'## Sentences Data'
+'# Sentences Data'
 st.write(data_pre)
+
+'''
+# Preprocessing Training Data
+'''
 
 stop_words = stopwords.words('indonesian')
 factory = StemmerFactory()
@@ -58,27 +62,43 @@ def stem_text(text):
 
 with st.spinner('Reducing url...'):
   data_pre['cleaning'] = data_pre['Text Tweet'].apply(lambda x: remove_url(x))
+  '## Reduce url'
+  data_pre['cleaning']
 
 with st.spinner('Reducing html code...'):
   data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: remove_html(x))
+  '## Reduce html code'
+  data_pre['cleaning']
 
 with st.spinner('Reducing punctuation...'):
   data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: remove_punct(x))
+  '## Reduce punctuation'
+  data_pre['cleaning']
 
 with st.spinner('Reducing emoji...'):
   data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: remove_emoji(x))
+  '## Reduce emoji'
+  data_pre['cleaning']
 
 with st.spinner('Reducing number...'):
   data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: remove_angka(x))
+  '## Reduce number'
+  data_pre['cleaning']
 
 with st.spinner('Reducing duplicate item...'):
   data_pre['cleaning'].drop_duplicates(inplace=True)
+  '## Reduce duplicate item'
+  data_pre['cleaning']
 
 with st.spinner('Lowercasing and Tokenization...'):
   data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: x.lower().split())
+  '## Lowercasing and Tokenization'
+  data_pre['cleaning']
 
 with st.spinner('Reducing stopword...'):
   data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: [word for word in x if word not in stop_words])
+  '## Reduce stopword'
+  data_pre['cleaning']
 
 @st.cache_data
 def stem():
@@ -87,8 +107,9 @@ def stem():
 
 data_pre['cleaned'] = stem()
     
-'## \'Clean\' Training Data'
+'## Stemming'
 data_pre['cleaned']
+'## And that\'s the \'clean\' data\n\n'
 
 dataku = ''
 if 'data' in st.session_state:
@@ -100,8 +121,7 @@ if 'data' in st.session_state:
     
     '## \'Clean\' Training + Test/Input Data'
     dataku
-    '## Input Data'
-    input
+
 
 
 
