@@ -7,7 +7,7 @@ import nltk
 from nltk.corpus import stopwords
 nltk.download('stopwords')
 
-'## Dataset'
+'# Dataset'
 
 with st.spinner('Getting Dataset...'):
     df = pd.read_csv('dataset_tweet_sentimen_tayangan_tv.csv')
@@ -109,11 +109,11 @@ data_pre['cleaned'] = stem()
     
 '## Stemming'
 data_pre['cleaned']
-'## And that\'s the \'clean\' data\n'
+'## And that\'s the \'clean\' data\n\n'
 
 dataku = ''
 if 'data' in st.session_state:
-    input = st.session_state['data'][0]
+    input = st.session_state['data'][0].tolist()
     dataku = data_pre['cleaned'].tolist()
     dataku.append(input)
     st.session_state['dataku'] = dataku
@@ -122,7 +122,8 @@ if 'data' in st.session_state:
     '## \'Clean\' Training + Test/Input Data'
     dataku
     '## Input Data'
-    input
+    i = st.session_state['data'][0]
+    i
 
 
 
