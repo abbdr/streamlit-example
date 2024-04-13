@@ -6,6 +6,7 @@ if 'dataku' in st.session_state:
   clean_data = st.session_state['dataku']
   # clean_data[-1]
 
+  
   doc = []
   for nums in clean_data:
     for val in nums:
