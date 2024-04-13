@@ -37,7 +37,7 @@ if 'dataku' in st.session_state:
   for i in range(1,402):
     doc_frame[f'd{i}'] = d[i-1]
   '## D'
-  doc_frame.iloc[:,403:]
+  st.write(doc_frame.iloc[:,403:])
 
   # df
   df = []
