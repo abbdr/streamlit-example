@@ -86,7 +86,7 @@ if st.button('simpan'):
         return data_pre['cleaned'].apply(lambda x: stem_text(x))
     
     data_pre['cleaned'] = stem()
-    data = data_pre['cleaned'].tolist()
+    data = data_pre['cleaned']
     st.session_state['data'] = data
         
     '## \'Clean\' Input'
