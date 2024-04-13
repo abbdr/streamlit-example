@@ -92,7 +92,7 @@ if 'dataku' in st.session_state:
   for i in range(1,402):
     doc_frame[f'v_d{i}'] = doc_frame[f'Wd{i}'].apply(lambda x: x**2)
   '## Length Vector'
-  st.write(doc_frame.iloc[:,1200:])
+  st.write(doc_frame.iloc[:,1205:])
   doc_frame
 
   # query*wdi sum
