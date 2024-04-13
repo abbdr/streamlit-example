@@ -85,6 +85,8 @@ if 'dataku' in st.session_state:
 
   for i in range(1,401):
     doc_frame[f'Wd401_d{i}'] = Wd401_di[i-1]
+  '## Query*WDi'
+  st.write(doc_frame.iloc[:,805:])
 
   # length vector
   for i in range(1,402):
