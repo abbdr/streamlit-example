@@ -106,10 +106,9 @@ if 'dataku' in st.session_state:
           continue
       c.append(i/b)
       a += 1
-  a = st.session_state['id']
+
   st.write('input : ', st.session_state['data'][0])
   c3 = sorted(zip(c, st.session_state['dataku'], st.session_state['sentiment'], st.session_state['id']),  reverse=True)[:11]
-  a
   c3
 
 
