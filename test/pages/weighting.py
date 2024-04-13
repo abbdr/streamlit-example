@@ -111,6 +111,6 @@ if 'dataku' in st.session_state:
   st.write('input : ', st.session_state['data'][0])
   c3 = sorted(zip(c, st.session_state['id'], st.session_state['data_awal'], st.session_state['sentiment']),  reverse=True)
   c3 = pd.DataFrame(c3)
-  c3.rename(columns = {0:'Relevancy', 1:'Id', 2:'terms', 3;'Sentiment'}, inplace = True)
+  c3.rename(columns = {0:'Relevancy', 1:'Id', 2:'terms', 3:'Sentiment'}, inplace = True)
   c3
 
