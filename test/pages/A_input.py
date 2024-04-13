@@ -7,6 +7,7 @@ import nltk
 from nltk.corpus import stopwords
 nltk.download('stopwords')
 
+
 stop_words = stopwords.words('indonesian')
 factory = StemmerFactory()
 stemmer = factory.create_stemmer()
