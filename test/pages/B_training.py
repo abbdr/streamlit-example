@@ -121,9 +121,7 @@ if 'data' in st.session_state:
     
     '## \'Clean\' Training + Test/Input Data'
     dataku
-    '## Input Data'
-    i = st.session_state['data']
-    i
+
 
 
 
