@@ -85,6 +85,7 @@ if st.button('simpan'):
         return data_pre['cleaned'].apply(lambda x: stem_text(x))
     
     data_pre['cleaned'] = stem()
+    st.session_state['input_df'] = data_pre['cleaned']
     data = data_pre['cleaned'].tolist()
     st.session_state['data'] = data
         
