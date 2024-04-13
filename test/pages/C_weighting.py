@@ -48,7 +48,7 @@ if 'dataku' in st.session_state:
       a += 1
       b += 1
   doc_frame['df'] = df
-  '## DOcument Frequency'
+  '## Document Frequency'
   with st.spinner('Calculating Document Frequency...'):
     st.write(doc_frame.iloc[:,402:])
 
