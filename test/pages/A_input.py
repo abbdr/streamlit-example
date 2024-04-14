@@ -50,7 +50,7 @@ input = st.text_input("Masukkan teks Anda di sini:")
 k = st.number_input("Masukkan nilai k di sini (ganjil):",3,201,value=3,step=2)
 k = k+1 if not k%2 else k
 if st.button('simpan'):
-    st.experimental_memo.weighting.clear()
+    # st.experimental_memo.weighting.clear()
     input_user = input
     st.session_state['k'] = k
     query = [input_user]
