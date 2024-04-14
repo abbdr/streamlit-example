@@ -143,4 +143,5 @@ def weighting():
   c
 
 if 'dataku' in st.session_state:
+  weighting.clear()
   weighting()
