@@ -105,21 +105,26 @@ if 'dataku' in st.session_state:
   #   doc_frame
 
   # query*wdi sum
+  '## query*wdi sum'
   Wd401_di = []
   with st.spinner('Calculating query*wdi sum...'):
     for i in range(1,401):
       Wd401_di.append(doc_frame[f'Wd401_d{i}'].values.sum())
-  Wd401_di = pd.DataFrame(Wd401_di)
+  Wd401_di = pd.DataFrame(Wd401_di, columns=['query*wdi sum'])
   Wd401_di
 
   # length vector sum
+  '## length vector sum'
   vs_di = []
   with st.spinner('Calculating length vector sum...'):
     for i in range(1,401):
       vs_di.append(np.sqrt(doc_frame[f'v_d{i}'].values.sum()))
     vs_d401 = np.sqrt(doc_frame['v_d401'].values.sum())
+  vs_di = pd.DataFrame(Wd401_di, columns=['length vector sum'])
+  vs_di
 
   # cosine similarity
+  '## cosine similarity'
   c = []
   a = 0
   with st.spinner('Calculating cosine similarity sum...'):
@@ -133,5 +138,6 @@ if 'dataku' in st.session_state:
         c.append(i/b)
         a += 1
         st.session_state['c'] = c
-
+  c = pd.DataFrame(Wd401_di, columns=['cosine similarity'])
+  c
 
