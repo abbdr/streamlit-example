@@ -115,7 +115,7 @@ data_pre['cleaned']
 '# '
 dataku = ''
 
-@st.experimental_memo
+# @st.experimental_memo
 def train_plus_input():
   input = st.session_state['data'][0]
   st.write(input)
