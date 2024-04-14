@@ -62,20 +62,26 @@ def show_data():
 
 data_pre = ''
 if st.button('simpan'):
-  if input=='':
-    st.session_state['dataku'] = ''
-    st.session_state['data'] = ''
-    st.session_state['c'] = ''
+  st.session_state['dataku'] = ''
+  st.session_state['data'] = ''
+  st.session_state['c'] = ''
 
-    del st.session_state['dataku']
-    del st.session_state['data']
-    del st.session_state['c']
-    show_data_pre.clear()
-    show_data.clear()
+  del st.session_state['dataku']
+  del st.session_state['data']
+  del st.session_state['c']
+  show_data_pre.clear()
+  show_data.clear()
+
+  if 'nA' in st.session_state:
+    st.session_state['nB'] += 1
+    pass
   else:
-    show_data_pre.clear()
-    show_data.clear()
+    st.session_state['nA'] = 1
+    st.session_state['nB'] = st.session_state['nA']+1
 
+  if input=='':
+    pass
+  else:
     input_user = input
     st.session_state['k'] = k
     query = [input_user]
@@ -117,7 +123,15 @@ if st.button('simpan'):
     st.session_state['data'] = data
         
     show_data()
+    
+ 
 
+if 'nA' in st.session_state:
+  n = st.session_state['nB']
+  n
+else:
+  n = 1
+  n
 
 
 

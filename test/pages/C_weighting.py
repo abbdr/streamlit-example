@@ -101,10 +101,6 @@ def weighting():
   with st.spinner('Calculating Length Vector...'):
     st.write(doc_frame.iloc[:,1205:])
 
-  # '## Full Result'
-  # with st.spinner('Loading Full Result...'):
-  #   doc_frame
-
   # query*wdi sum
   '## query*wdi sum'
   Wd401_di = []
@@ -136,14 +132,27 @@ def weighting():
             a += 1
             
             continue
+
         c.append(i/b)
         a += 1
         st.session_state['c'] = c
   c = pd.DataFrame(Wd401_di, columns=['cosine similarity'])
   c
 
+
 if 'dataku' in st.session_state:
+  nA = st.session_state['nA']
+  nB = st.session_state['nB']
+  if nA != nB:
+    if nB-1 != nA:
+      st.session_state['nA'] = st.session_state['nB']-1
+    st.session_state['nA'] += 1
+    weighting.clear()
   weighting()
+  nB
+
 else:
-  # weighting.clear()
-  pass
+  num = st.session_state['nB'] if 'nB' in st.session_state else 1
+  num
+
+

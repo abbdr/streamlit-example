@@ -20,10 +20,6 @@ data_pre = pd.DataFrame(df['Text Tweet'])
 '# Sentences Data'
 st.write(data_pre)
 
-'''
-# Preprocessing Training Data
-'''
-
 stop_words = stopwords.words('indonesian')
 factory = StemmerFactory()
 stemmer = factory.create_stemmer()
@@ -105,22 +101,35 @@ def stem():
     data = data_pre['cleaning'].apply(lambda x: stem_text(x))
     return data
 
-data_pre['cleaned'] = stem()
-    
+@st.cache_data
+def root_word():
+  with st.spinner('Getting LLM Dictionary...'):
+    kamus = pd.read_csv('kata_dasar_bhs_indo.csv')
+    kamus = kamus['0'].values.tolist()
+    return data_pre['cleaning'].apply(lambda x: [word for word in x if word in kamus])
+
+
 '## Stemming'
-data_pre['cleaned']
+with st.spinner('Stemming...'):
+  data_pre['cleaning'] = stem()
+  data_pre['cleaning']
+
+'## Apply kata dasar'
+data_pre['cleaning'] = root_word()
+data_pre['cleaning']
+
+
 '## And that\'s the \'clean\' training data\n\n'
+'# '
+'# '
 '# '
 '# '
 '# '
 dataku = ''
 
-# @st.experimental_memo
 def train_plus_input():
   input = st.session_state['data'][0]
-  st.write(input)
-
-  dataku = data_pre['cleaned'].tolist()
+  dataku = data_pre['cleaning'].tolist()
   dataku.append(input)
   st.session_state['dataku'] = dataku
   dataku = pd.DataFrame(dataku)
@@ -130,21 +139,14 @@ def train_plus_input():
 
 if 'data' in st.session_state:
   train_plus_input()
+
+if 'nA' in st.session_state:
+  n = st.session_state['nB']
+  n
 else:
-  pass
-  # st.session_state['dataku'] = ''
-  # del st.session_state['dataku']
-  # train_plus_input.clear() 
-
+  n = 1
+  n
     
-
-
-
-
-
-
-
-
 
 
 
