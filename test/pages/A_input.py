@@ -60,6 +60,7 @@ def show_data():
   st.markdown('## \'Clean\' Training + Test/Input Data')
   st.write(data_pre['cleaned'])
 
+data_pre = ''
 if st.button('simpan'):
   if input=='':
     del st.session_state['dataku']
