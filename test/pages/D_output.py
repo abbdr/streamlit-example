@@ -1,3 +1,5 @@
+import streamlit as st
+import pandas as pd
 if 'c' in st.session_state:
   st.write('input : ', st.session_state['input_df'])
   st.write('k : ',st.session_state['k'])
