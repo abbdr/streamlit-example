@@ -118,8 +118,6 @@ dataku = ''
 @st.experimental_memo
 def train_plus_input():
   input = st.session_state['data'][0]
-  st.write(input)
-
   dataku = data_pre['cleaned'].tolist()
   dataku.append(input)
   st.session_state['dataku'] = dataku
