@@ -49,16 +49,26 @@ data = ''
 input = st.text_input("Masukkan teks Anda di sini:")
 k = st.number_input("Masukkan nilai k di sini (ganjil):",3,201,value=3,step=2)
 k = k+1 if not k%2 else k
+
+@st.experimental_memo
+def show_data_pre():
+  '## Input Data'
+  data_pre
+
+@st.experimental_memo
+def show_data():
+  '## \'Clean\' Training + Test/Input Data'
+  data
+
 if st.button('simpan'):
-    
+    st.experimental_memo.clear()
     input_user = input
     st.session_state['k'] = k
     query = [input_user]
     data_pre = pd.DataFrame(query,columns=['Text Input'])
     st.session_state['input_df'] = data_pre
     
-    '## Input Data'
-    data_pre
+    show_data_pre()
     
     with st.spinner('Reducing url...'):
       data_pre['cleaned'] = data_pre['Text Input'].apply(lambda x: remove_url(x))
@@ -87,10 +97,10 @@ if st.button('simpan'):
     def stem():
         return data_pre['cleaned'].apply(lambda x: stem_text(x))
     
+
     data_pre['cleaned'] = stem()
     data = data_pre['cleaned']
     st.session_state['data'] = data
         
-    '## \'Clean\' Input'
-    data_pre['cleaned']
+    show_data
 
