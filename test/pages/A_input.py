@@ -53,15 +53,15 @@ k = k+1 if not k%2 else k
 @st.experimental_memo
 def show_data_pre():
   '## Input Data'
-  data_pre
+  st.write(data_pre)
 
 @st.experimental_memo
 def show_data():
   '## \'Clean\' Training + Test/Input Data'
-  data
+  st.write(data)
 
 if st.button('simpan'):
-    st.experimental_memo.clear()
+    # st.experimental_memo.clear()
     del st.session_state['dataku']
     del st.session_state['data']
 
