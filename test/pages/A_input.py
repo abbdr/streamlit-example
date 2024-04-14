@@ -115,5 +115,5 @@ if st.button('simpan'):
     data = data_pre['cleaned']
     st.session_state['data'] = data
         
-    show_data
+    show_data()
 
