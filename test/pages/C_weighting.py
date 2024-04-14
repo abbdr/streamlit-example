@@ -120,8 +120,8 @@ if 'dataku' in st.session_state:
     for i in range(1,401):
       vs_di.append(np.sqrt(doc_frame[f'v_d{i}'].values.sum()))
     vs_d401 = np.sqrt(doc_frame['v_d401'].values.sum())
-  vs_di = pd.DataFrame(Wd401_di, columns=['length vector sum'])
-  vs_di
+  vector = pd.DataFrame(Wd401_di, columns=['length vector sum'])
+  vector
 
   # cosine similarity
   '## cosine similarity'
