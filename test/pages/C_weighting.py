@@ -110,8 +110,8 @@ if 'dataku' in st.session_state:
   with st.spinner('Calculating query*wdi sum...'):
     for i in range(1,401):
       Wd401_di.append(doc_frame[f'Wd401_d{i}'].values.sum())
-  Wd401_di = pd.DataFrame(Wd401_di, columns=['query*wdi sum'])
-  Wd401_di
+  Wd401_di_ = pd.DataFrame(Wd401_di, columns=['query*wdi sum'])
+  Wd401_di_
 
   # length vector sum
   '## length vector sum'
