@@ -100,9 +100,9 @@ if 'dataku' in st.session_state:
   with st.spinner('Calculating Length Vector...'):
     st.write(doc_frame.iloc[:,1205:])
 
-  '## Full Result'
-  with st.spinner('Loading Full Result...'):
-    doc_frame
+  # '## Full Result'
+  # with st.spinner('Loading Full Result...'):
+  #   doc_frame
 
   # query*wdi sum
   Wd401_di = []
