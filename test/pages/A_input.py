@@ -66,15 +66,15 @@ if st.button('simpan'):
     st.session_state['dataku'] = ''
     st.session_state['data'] = ''
     st.session_state['c'] = ''
-    
+
     del st.session_state['dataku']
     del st.session_state['data']
     del st.session_state['c']
     show_data_pre.clear()
     show_data.clear()
   else:
-    show_data_pre.clear()
-    show_data.clear()
+    # show_data_pre.clear()
+    # show_data.clear()
 
     input_user = input
     st.session_state['k'] = k
@@ -117,4 +117,8 @@ if st.button('simpan'):
     st.session_state['data'] = data
         
     show_data()
+
+
+
+
 
