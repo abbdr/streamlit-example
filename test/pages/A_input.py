@@ -61,6 +61,7 @@ def show_data():
   st.write(data_pre['cleaned'])
 
 data_pre = ''
+st.session_state['dataku'] = ''
 if st.button('simpan'):
   if input=='':
     del st.session_state['dataku']
