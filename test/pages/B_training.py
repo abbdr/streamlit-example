@@ -131,7 +131,7 @@ if 'data' in st.session_state:
 else:
   st.session_state['dataku'] = ''
   del st.session_state['dataku']
-  # train_plus_input.clear()
+  # train_plus_input.clear() 
 
     
 
