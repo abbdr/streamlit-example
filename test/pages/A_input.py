@@ -62,6 +62,8 @@ def show_data():
 
 data_pre = ''
 st.session_state['dataku'] = ''
+st.session_state['data'] = ''
+st.session_state['c'] = ''
 if st.button('simpan'):
   if input=='':
     del st.session_state['dataku']
