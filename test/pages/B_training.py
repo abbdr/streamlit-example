@@ -129,6 +129,7 @@ def train_plus_input():
 if 'data' in st.session_state:
   train_plus_input()
 else:
+  st.session_state['dataku'] = ''
   del st.session_state['dataku']
   train_plus_input.clear()
 
