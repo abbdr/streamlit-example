@@ -65,6 +65,7 @@ if st.button('simpan'):
   if input=='':
     del st.session_state['dataku']
     del st.session_state['data']
+    del st.session_state['c']
     show_data_pre.clear()
     show_data.clear()
   else:
