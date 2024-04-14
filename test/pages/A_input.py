@@ -73,8 +73,8 @@ if st.button('simpan'):
     show_data_pre.clear()
     show_data.clear()
   else:
-    # show_data_pre.clear()
-    # show_data.clear()
+    show_data_pre.clear()
+    show_data.clear()
 
     input_user = input
     st.session_state['k'] = k
