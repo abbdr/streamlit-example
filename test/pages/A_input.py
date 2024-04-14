@@ -61,11 +61,12 @@ def show_data():
   st.write(data_pre['cleaned'])
 
 data_pre = ''
-st.session_state['dataku'] = ''
-st.session_state['data'] = ''
-st.session_state['c'] = ''
 if st.button('simpan'):
   if input=='':
+    st.session_state['dataku'] = ''
+    st.session_state['data'] = ''
+    st.session_state['c'] = ''
+    
     del st.session_state['dataku']
     del st.session_state['data']
     del st.session_state['c']
