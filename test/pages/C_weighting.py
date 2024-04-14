@@ -100,7 +100,7 @@ if 'dataku' in st.session_state:
   with st.spinner('Calculating Length Vector...'):
     st.write(doc_frame.iloc[:,1205:])
 
-  '## Full Reult'
+  '## Full Result'
   with st.spinner('Loading Full Result...'):
     doc_frame
 
