@@ -62,6 +62,9 @@ def show_data():
 
 if st.button('simpan'):
     st.experimental_memo.clear()
+    del st.session_state['dataku']
+    del st.session_state['data']
+
     input_user = input
     st.session_state['k'] = k
     query = [input_user]
