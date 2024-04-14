@@ -142,10 +142,10 @@ if 'data' in st.session_state:
 
 if 'nA' in st.session_state:
   n = st.session_state['nB']
-  n
+  st.write(n)
 else:
   n = 1
-  n
+  st.write(n)
     
 
 

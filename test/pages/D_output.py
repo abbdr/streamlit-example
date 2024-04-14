@@ -9,4 +9,4 @@ if 'c' in st.session_state:
   '### Output'
   ck
 n = st.session_state['nB']  if 'nB' in st.session_state else 1
-n
+st.write(n)

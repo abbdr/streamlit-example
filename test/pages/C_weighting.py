@@ -149,10 +149,10 @@ if 'dataku' in st.session_state:
     st.session_state['nA'] += 1
     weighting.clear()
   weighting()
-  nB
+  st.write(nB)
 
 else:
   num = st.session_state['nB'] if 'nB' in st.session_state else 1
-  num
+  st.write(num)
 
 
