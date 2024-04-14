@@ -2,7 +2,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-if 'dataku' in st.session_state:
+@st.experimental_memo
+def weighting():
   clean_data = st.session_state['dataku']
   # clean_data[-1]
 
@@ -141,3 +142,5 @@ if 'dataku' in st.session_state:
   c = pd.DataFrame(Wd401_di, columns=['cosine similarity'])
   c
 
+if 'dataku' in st.session_state:
+  weighting()
