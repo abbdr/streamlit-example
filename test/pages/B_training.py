@@ -114,17 +114,25 @@ data_pre['cleaned']
 '# '
 '# '
 dataku = ''
-if 'data' in st.session_state:
-    
 
-    input = st.session_state['data'][0]
-    dataku = data_pre['cleaned'].tolist()
-    dataku.append(input)
-    st.session_state['dataku'] = dataku
-    dataku = pd.DataFrame(dataku)
+@st.experimental_memo
+def train_plus_input():
+  input = st.session_state['data'][0]
+  dataku = data_pre['cleaned'].tolist()
+  dataku.append(input)
+  st.session_state['dataku'] = dataku
+  dataku = pd.DataFrame(dataku)
+  
+  st.markdown('## \'Clean\' Training + Test/Input Data')
+  st.write(dataku)
+
+if 'data' in st.session_state:
+  train_plus_input()
+else:
+  del st.session_state['dataku']
+  train_plus_input.clear()
+
     
-    '## \'Clean\' Training + Test/Input Data'
-    dataku
 
 
 
