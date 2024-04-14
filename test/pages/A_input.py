@@ -58,7 +58,7 @@ def show_data_pre():
 @st.experimental_memo
 def show_data():
   st.markdown('## \'Clean\' Training + Test/Input Data')
-  st.write(data)
+  st.write(data_pre['cleaned'])
 
 if st.button('simpan'):
   if input=='':
