@@ -136,7 +136,7 @@ if st.button('simpan'):
 
     train = st.session_state['training'].tolist()
     test = data[0]
-    test
+    # test
 
     dataku = train
     dataku.append(test)
