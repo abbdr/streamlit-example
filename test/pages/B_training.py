@@ -149,7 +149,7 @@ if 'nA' in st.session_state:
   n = st.session_state['nB']
   st.write(n)
 else:
-  n = 1
+  n = 0
   st.write(n)
     
 

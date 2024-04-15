@@ -152,7 +152,7 @@ if 'dataku' in st.session_state:
   st.write(nB)
 
 else:
-  num = st.session_state['nB'] if 'nB' in st.session_state else 1
+  num = st.session_state['nB'] if 'nB' in st.session_state else 0
   st.write(num)
 
 

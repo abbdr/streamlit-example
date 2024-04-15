@@ -20,5 +20,5 @@ if 'c' in st.session_state:
   st.write('#### Positif: ',len(positif))
   st.write('#### Negatif: ',len(negatif))
   st.write('#### Kesimpulan: ', 'positif' if positif>negatif else 'negatif')
-n = st.session_state['nB']  if 'nB' in st.session_state else 1
+n = st.session_state['nB']  if 'nB' in st.session_state else 0
 st.write(n)
