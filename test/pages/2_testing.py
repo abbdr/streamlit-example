@@ -44,28 +44,31 @@ def stem_text(text):
     return [stemmer.stem(word) for word in text]
 
 query = ''
-data_pre = ''
-data = ''
+data_pre_ = ''
+dataku_ = ''
+dataku = ''
 input = st.text_input("Masukkan teks Anda di sini:")
 
-@st.experimental_memo
+# @st.experimental_memo
+@st.cache_data
 def show_data_pre():
   st.markdown('## Input Data')
-  st.write(data_pre)
+  st.write(data_pre_)
 
-@st.experimental_memo
+# @st.experimental_memo
+@st.cache_data
 def show_data():
-  st.markdown('## \'Clean\' Training + Test/Input Data')
-  st.write(data_pre['cleaned'])
+  st.markdown('## \'Clean\' Training + Testing Data')
+  st.write(dataku_)
 
 data_pre = ''
 if st.button('simpan'):
-  st.session_state['training'] = ''
   st.session_state['testing'] = ''
   st.session_state['c'] = ''
+  st.session_state['dataku'] = ''
 
-  del st.session_state['training']
   del st.session_state['testing']
+  del st.session_state['dataku']
   del st.session_state['c']
   show_data_pre.clear()
   show_data.clear()
@@ -85,8 +88,8 @@ if st.button('simpan'):
     query = [input_user]
     data_pre = pd.DataFrame(query,columns=['Text Input'])
     st.session_state['input_df'] = data_pre
+    data_pre_ = data_pre
     
-    show_data_pre()
     
     with st.spinner('Reducing url...'):
       data_pre['cleaned'] = data_pre['Text Input'].apply(lambda x: remove_url(x))
@@ -115,25 +118,35 @@ if st.button('simpan'):
     def stem():
         return data_pre['cleaned'].apply(lambda x: stem_text(x))
     
+    def root_word():
+      with st.spinner('Getting LLM Dictionary...'):
+        kamus = set(pd.read_csv('kata_dasar_bhs_indo.csv')['0'])
+        kamus.remove('moga')
+        data_pre['cleaned'] = data_pre['cleaned'].apply(lambda x: [word for word in x if word in kamus])
+      
+        return data_pre['cleaned']
 
     data_pre['cleaned'] = stem()
+
+    '## Apply kata dasar'
+    data_pre['cleaned'] = root_word()
     data = data_pre['cleaned']
+
     st.session_state['testing'] = data
-        
-    show_data()
-    
-def train_plus_input():
-  input = st.session_state['testing'][0]
-  dataku = st.session_state['training']
-  # dataku.append(input)
-  # dataku = pd.DataFrame(dataku)
-  # st.session_state['dataku'] = dataku
 
-  st.markdown('## \'Clean\' Training + Test/Input Data')
-  st.write(dataku)
+    train = st.session_state['training'].tolist()
+    test = data[0]
+    test
 
-if 'testing' in st.session_state:
-  train_plus_input()
+    dataku = train
+    dataku.append(test)
+    dataku_ = pd.DataFrame(dataku)
+
+
+if 'testing'  in st.session_state:
+  show_data_pre()
+  show_data()
+  st.session_state['dataku'] = dataku
 
 num = st.session_state['nB'] if 'nB' in st.session_state else 0
 num

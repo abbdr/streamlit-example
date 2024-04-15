@@ -20,10 +20,14 @@ data_pre = pd.DataFrame(df['Text Tweet'])
 '# Sentences Data'
 st.write(data_pre)
 
-kata = ['ya','yuk','aja','yg','liat','ni','moga']
-stop_words = stopwords.words('indonesian')
+kata = ['ya','yuk','aja','yg','liat','ni','moga','nih','oke','kes','gin','t']
+stop_words = set(stopwords.words('indonesian'))
+
+f = open('combined_stop_words.txt','r').readlines()
+for i in f:
+  stop_words.add(re.sub(r'[^a-z]','',i))
 for i in kata:
-  stop_words.append(i)
+  stop_words.add(i)
 
 
 factory = StemmerFactory()
@@ -109,9 +113,12 @@ def stem():
 @st.cache_data
 def root_word():
   with st.spinner('Getting LLM Dictionary...'):
-    kamus = pd.read_csv('kata_dasar_bhs_indo.csv')
-    kamus = kamus['0'].values.tolist()
-    return data_pre['cleaning'].apply(lambda x: [word for word in x if word in kamus])
+    kamus = set(pd.read_csv('kata_dasar_bhs_indo.csv')['0'])
+    kamus.remove('moga')
+    data_pre['cleaning'] = data_pre['cleaning'].apply(lambda x: [word for word in x if word in kamus])
+  
+    return data_pre['cleaning']
+
 
 
 '## Stemming'
@@ -119,17 +126,20 @@ with st.spinner('Stemming...'):
   data_pre['cleaning'] = stem()
   data_pre['cleaning']
 
+
 '## Apply kata dasar'
 data_pre['cleaning'] = root_word()
-data_pre['cleaning']
+# data_pre['cleaning']
 
 
-'## And that\'s the \'clean\' training data\n\n'
+# '## And that\'s the \'clean\' training data\n\n'
+'## '
 
 
 dataku = data_pre['cleaning']
 st.session_state['training'] = dataku
 st.session_state['training']
+
 num = st.session_state['nB'] if 'nB' in st.session_state else 0
 st.write(num)
     

@@ -2,12 +2,12 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-@st.experimental_memo
+# @st.experimental_memo
+@st.cache_data
 def weighting():
   clean_data = st.session_state['dataku']
-  # clean_data[-1]
+  # clean_data
 
-  
   doc = []
   for nums in clean_data:
     for val in nums:
