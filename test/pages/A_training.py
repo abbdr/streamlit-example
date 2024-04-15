@@ -129,7 +129,7 @@ data_pre['cleaning']
 
 dataku = data_pre['cleaning']
 st.session_state['training'] = dataku
-dataku
+st.session_state['training']
 num = st.session_state['nB'] if 'nB' in st.session_state else 0
 st.write(num)
     
