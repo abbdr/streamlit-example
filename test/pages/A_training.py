@@ -125,35 +125,12 @@ data_pre['cleaning']
 
 
 '## And that\'s the \'clean\' training data\n\n'
-'# '
-'# '
-'# '
-'# '
-'# '
-dataku = ''
 
-def train_plus_input():
-  input = st.session_state['data'][0]
-  dataku = data_pre['cleaning'].tolist()
-  dataku.append(input)
-  st.session_state['dataku'] = dataku
-  dataku = pd.DataFrame(dataku)
-  
-  st.markdown('## \'Clean\' Training + Test/Input Data')
-  st.write(dataku)
 
-if 'data' in st.session_state:
-  train_plus_input()
+dataku = data_pre['cleaning'].tolist()
+st.session_state['training'] = dataku
 
-if 'nA' in st.session_state:
-  n = st.session_state['nB']
-  st.write(n)
-else:
-  n = 0
-  st.write(n)
+num = st.session_state['nB'] if 'nB' in st.session_state else 0
+st.write(num)
     
-
-
-
-
 

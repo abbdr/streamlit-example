@@ -60,12 +60,12 @@ def show_data():
 
 data_pre = ''
 if st.button('simpan'):
-  st.session_state['dataku'] = ''
-  st.session_state['data'] = ''
+  st.session_state['training'] = ''
+  st.session_state['testing'] = ''
   st.session_state['c'] = ''
 
-  del st.session_state['dataku']
-  del st.session_state['data']
+  del st.session_state['training']
+  del st.session_state['testing']
   del st.session_state['c']
   show_data_pre.clear()
   show_data.clear()
@@ -118,19 +118,26 @@ if st.button('simpan'):
 
     data_pre['cleaned'] = stem()
     data = data_pre['cleaned']
-    st.session_state['data'] = data
+    st.session_state['testing'] = data
         
     show_data()
     
- 
+def train_plus_input():
+  input = st.session_state['testing'][0]
+  dataku = st.session_state['training']
+  dataku.append(input)
 
-if 'nA' in st.session_state:
-  n = st.session_state['nB']
-  st.write(n)
-else:
-  n = 0
-  st.write(n)
+  dataku = pd.DataFrame(dataku)
+  st.session_state['dataku'] = dataku
 
+  st.markdown('## \'Clean\' Training + Test/Input Data')
+  st.write(dataku)
+
+if 'dataku' in st.session_state:
+  train_plus_input()
+
+num = st.session_state['nB'] if 'nB' in st.session_state else 0
+num
 
 
 
