@@ -127,7 +127,7 @@ data_pre['cleaning']
 '## And that\'s the \'clean\' training data\n\n'
 
 
-dataku = data_pre['cleaning'].tolist()
+dataku = data_pre['cleaning']
 st.session_state['training'] = dataku
 dataku
 num = st.session_state['nB'] if 'nB' in st.session_state else 0
