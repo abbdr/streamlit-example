@@ -132,7 +132,7 @@ def train_plus_input():
   st.markdown('## \'Clean\' Training + Test/Input Data')
   st.write(dataku)
 
-if 'training' in st.session_state:
+if 'testing' in st.session_state:
   train_plus_input()
 
 num = st.session_state['nB'] if 'nB' in st.session_state else 0
