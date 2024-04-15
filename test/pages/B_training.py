@@ -20,7 +20,12 @@ data_pre = pd.DataFrame(df['Text Tweet'])
 '# Sentences Data'
 st.write(data_pre)
 
+kata = ['ya','yuk','aja','yg','liat','ni','moga']
 stop_words = stopwords.words('indonesian')
+for i in kata:
+  stop_words.append(i)
+
+
 factory = StemmerFactory()
 stemmer = factory.create_stemmer()
 
