@@ -124,16 +124,15 @@ if st.button('simpan'):
     
 def train_plus_input():
   input = st.session_state['testing'][0]
-  dataku = st.session_state['training']
-  # dataku.append(input)
-
-  # dataku = pd.DataFrame(dataku)
+  dataku = st.session_state['training'][0]
+  dataku.append(input)
+  dataku = pd.DataFrame(dataku)
   st.session_state['dataku'] = dataku
 
   st.markdown('## \'Clean\' Training + Test/Input Data')
   st.write(dataku)
 
-if 'dataku' in st.session_state:
+if 'training' in st.session_state:
   train_plus_input()
 
 num = st.session_state['nB'] if 'nB' in st.session_state else 0
