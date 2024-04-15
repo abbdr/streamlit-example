@@ -130,7 +130,7 @@ if st.button('simpan'):
 
     '## Apply kata dasar'
     data_pre['cleaned'] = root_word()
-    # data = data_pre['cleaned']
+    data = data_pre['cleaned']
 
     st.session_state['testing'] = data
 
