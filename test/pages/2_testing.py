@@ -49,14 +49,14 @@ dataku_ = ''
 dataku = ''
 input = st.text_input("Masukkan teks Anda di sini:")
 
-# @st.experimental_memo
-@st.cache_data
+@st.experimental_memo
+# @st.cache_data
 def show_data_pre():
   st.markdown('## Input Data')
   st.write(data_pre_)
 
-# @st.experimental_memo
-@st.cache_data
+@st.experimental_memo
+# @st.cache_data
 def show_data():
   st.markdown('## \'Clean\' Training + Testing Data')
   st.write(dataku_)
