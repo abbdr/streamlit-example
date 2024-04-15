@@ -124,7 +124,7 @@ if st.button('simpan'):
     
 def train_plus_input():
   input = st.session_state['testing'][0]
-  dataku = st.session_state['training'][0]
+  dataku = st.session_state['training']
   # dataku.append(input)
   # dataku = pd.DataFrame(dataku)
   # st.session_state['dataku'] = dataku
