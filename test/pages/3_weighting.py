@@ -35,7 +35,7 @@ def weighting():
     
   # d
   doc_frame = pd.DataFrame(doc_clean, columns=['Terms'])
-  for i in range(1,402):
+  for i in range(1,401):
     doc_frame[f'd{i}'] = d[i-1]
   '## Term Frequency'
   with st.spinner('Calculating Term Frequency...'):
