@@ -55,6 +55,7 @@ def show_data_pre():
   st.markdown('## Input Data')
   st.write(data_pre_)
 
+
 @st.experimental_memo
 # @st.cache_data
 def show_data():
