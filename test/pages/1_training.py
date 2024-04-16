@@ -7,6 +7,9 @@ import nltk
 from nltk.corpus import stopwords
 nltk.download('stopwords')
 
+import pip
+pip.main(["install", "openpyxl"])
+
 '# Dataset'
 
 with st.spinner('Getting Dataset...'):
