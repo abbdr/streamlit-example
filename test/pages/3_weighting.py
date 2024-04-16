@@ -2,12 +2,14 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-@st.experimental_memo
-# @st.cache_data
+# @st.experimental_memo
+@st.cache_data
 def weighting():
   clean_data = st.session_state['dataku']
   # clean_data
   length = len(clean_data)
+  # length
+  # return
 
   doc = []
   for nums in clean_data:
@@ -80,17 +82,17 @@ def weighting():
     st.write(doc_frame.iloc[:,length+3:])
 
   # query*wdi
-  Wd401_di = []
+  WdLength_di = []
   for i in range(1,length):
       a = []
       n = 0
       for j in doc_frame[f'Wd{i}']:
           a.append(doc_frame[f'Wd{length}'][n]*j)
           n += 1
-      Wd401_di.append(a)
+      WdLength_di.append(a)
 
   for i in range(1,length):
-    doc_frame[f'Wd401_d{i}'] = Wd401_di[i-1]
+    doc_frame[f'WdLength_d{i}'] = WdLength_di[i-1]
   '## Query*WDi'
   with st.spinner('Calculating Query*WDi...'):
     st.write(doc_frame.iloc[:,(length+3)+(length):])
@@ -104,12 +106,12 @@ def weighting():
 
   # query*wdi sum
   '## query*wdi sum'
-  Wd401_di = []
+  WdLength_di = []
   with st.spinner('Calculating query*wdi sum...'):
     for i in range(1,length):
-      Wd401_di.append(doc_frame[f'Wd401_d{i}'].values.sum())
-  Wd401_di_ = pd.DataFrame(Wd401_di, columns=['query*wdi sum'])
-  Wd401_di_
+      WdLength_di.append(doc_frame[f'WdLength_d{i}'].values.sum())
+  WdLength_di_ = pd.DataFrame(WdLength_di, columns=['query*wdi sum'])
+  WdLength_di_
 
   # length vector sum
   '## length vector sum'
@@ -117,8 +119,8 @@ def weighting():
   with st.spinner('Calculating length vector sum...'):
     for i in range(1,length):
       vs_di.append(np.sqrt(doc_frame[f'v_d{i}'].values.sum()))
-    vs_d401 = np.sqrt(doc_frame[f'v_d{length}'].values.sum())
-  vector = pd.DataFrame(Wd401_di, columns=['length vector sum'])
+    vs_dLength = np.sqrt(doc_frame[f'v_d{length}'].values.sum())
+  vector = pd.DataFrame(WdLength_di, columns=['length vector sum'])
   vector
 
   # cosine similarity
@@ -126,8 +128,10 @@ def weighting():
   c = []
   a = 0
   with st.spinner('Calculating cosine similarity sum...'):
-    for i in Wd401_di:
-        b = vs_di[a]*vs_d401
+    for i in WdLength_di:
+        if a >= len(vs_di):
+          break
+        b = vs_di[a]*vs_dLength
         if not b:
             c.append(0)
             a += 1
@@ -137,7 +141,7 @@ def weighting():
         c.append(i/b)
         a += 1
         st.session_state['c'] = c
-  c = pd.DataFrame(Wd401_di, columns=['cosine similarity'])
+  c = pd.DataFrame(WdLength_di, columns=['cosine similarity'])
   c
 
 
