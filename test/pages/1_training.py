@@ -10,8 +10,8 @@ nltk.download('stopwords')
 '# Dataset'
 
 with st.spinner('Getting Dataset...'):
-    df = pd.read_excel('dataset_tweet_sentimen_tayangan_tv.xlsx')
-    # df = pd.read_csv('dataset_tweet_sentimen_tayangan_tv.csv')
+    # df = pd.read_excel('dataset_tweet_sentimen_tayangan_tv.xlsx')
+    df = pd.read_csv('dataset_tweet_sentimen_tayangan_tv.csv')
     st.session_state['data_awal'] = df['Text Tweet']
     st.session_state['sentiment'] = df['Sentiment']
     st.session_state['id'] = df['Id']
