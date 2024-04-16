@@ -65,7 +65,7 @@ def weighting():
 
   # wdi
   Wd = []
-  for i in range(1,402):
+  for i in range(1,length+1):
       a = []
       n = 0
       for j in doc_frame[f'd{i}']:
@@ -115,7 +115,7 @@ def weighting():
   '## length vector sum'
   vs_di = []
   with st.spinner('Calculating length vector sum...'):
-    for i in range(1,401):
+    for i in range(1,length):
       vs_di.append(np.sqrt(doc_frame[f'v_d{i}'].values.sum()))
     vs_d401 = np.sqrt(doc_frame[f'v_d{length}'].values.sum())
   vector = pd.DataFrame(Wd401_di, columns=['length vector sum'])
