@@ -7,6 +7,7 @@ import numpy as np
 def weighting():
   clean_data = st.session_state['dataku']
   # clean_data
+  length = len(clean_data)
 
   doc = []
   for nums in clean_data:
@@ -17,7 +18,7 @@ def weighting():
 
   d = []
   a = 0
-  for i in range(len(clean_data)):
+  for i in range(length):
       list = []
       for j in doc_clean:
           if a>=len(clean_data):
@@ -35,7 +36,7 @@ def weighting():
     
   # d
   doc_frame = pd.DataFrame(doc_clean, columns=['Terms'])
-  for i in range(1,402):
+  for i in range(1,length+1):
     doc_frame[f'd{i}'] = d[i-1]
   '## Term Frequency'
   with st.spinner('Calculating Term Frequency...'):
@@ -51,7 +52,7 @@ def weighting():
   doc_frame['df'] = df
   '## Document Frequency'
   with st.spinner('Calculating Document Frequency...'):
-    st.write(doc_frame.iloc[:,402:])
+    st.write(doc_frame.iloc[:,length+1:])
 
   # idf
   idf = []
@@ -60,7 +61,7 @@ def weighting():
   doc_frame['idf'] = idf
   '## inverse Document Frequency'
   with st.spinner('Calculating Inverse Document Frequency...'):
-    st.write(doc_frame.iloc[:,403:])
+    st.write(doc_frame.iloc[:,length+2:])
 
   # wdi
   Wd = []
@@ -72,40 +73,40 @@ def weighting():
           n += 1
       Wd.append(a)
 
-  for i in range(1,402):
+  for i in range(1,length+1):
     doc_frame[f'Wd{i}'] = Wd[i-1]
   '## Weighting Document inverse'
   with st.spinner('Calculating Weighting Document inverse...'):
-    st.write(doc_frame.iloc[:,404:])
+    st.write(doc_frame.iloc[:,length+3:])
 
   # query*wdi
   Wd401_di = []
-  for i in range(1,401):
+  for i in range(1,length):
       a = []
       n = 0
       for j in doc_frame[f'Wd{i}']:
-          a.append(doc_frame['Wd401'][n]*j)
+          a.append(doc_frame[f'Wd{length}'][n]*j)
           n += 1
       Wd401_di.append(a)
 
-  for i in range(1,401):
+  for i in range(1,length):
     doc_frame[f'Wd401_d{i}'] = Wd401_di[i-1]
   '## Query*WDi'
   with st.spinner('Calculating Query*WDi...'):
-    st.write(doc_frame.iloc[:,805:])
+    st.write(doc_frame.iloc[:,(length+3)+(length):])
 
   # length vector
-  for i in range(1,402):
+  for i in range(1,length+1):
     doc_frame[f'v_d{i}'] = doc_frame[f'Wd{i}'].apply(lambda x: x**2)
   '## Length Vector'
   with st.spinner('Calculating Length Vector...'):
-    st.write(doc_frame.iloc[:,1205:])
+    st.write(doc_frame.iloc[:,(length+3)+(length)+(length+1):])
 
   # query*wdi sum
   '## query*wdi sum'
   Wd401_di = []
   with st.spinner('Calculating query*wdi sum...'):
-    for i in range(1,401):
+    for i in range(1,length):
       Wd401_di.append(doc_frame[f'Wd401_d{i}'].values.sum())
   Wd401_di_ = pd.DataFrame(Wd401_di, columns=['query*wdi sum'])
   Wd401_di_
@@ -116,7 +117,7 @@ def weighting():
   with st.spinner('Calculating length vector sum...'):
     for i in range(1,401):
       vs_di.append(np.sqrt(doc_frame[f'v_d{i}'].values.sum()))
-    vs_d401 = np.sqrt(doc_frame['v_d401'].values.sum())
+    vs_d401 = np.sqrt(doc_frame[f'v_d{length}'].values.sum())
   vector = pd.DataFrame(Wd401_di, columns=['length vector sum'])
   vector
 
