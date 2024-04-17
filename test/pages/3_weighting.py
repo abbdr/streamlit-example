@@ -141,7 +141,7 @@ def weighting():
         c.append(i/b)
         a += 1
         st.session_state['c'] = c
-  c = pd.DataFrame(WdLength_di, columns=['cosine similarity'])
+  c = pd.DataFrame(c, columns=['cosine similarity'])
   c
 
 
